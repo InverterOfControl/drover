@@ -23,7 +23,8 @@ var usersService = new UsersService(connection);
 
 var users = await usersService.GetUsers();
 
-
-Console.WriteLine(users.FirstOrDefault().DisplayName);
+if(users.Count > 0){
+    Console.WriteLine(users.FirstOrDefault()?.DisplayName);
+}
 
 Console.ReadKey();
