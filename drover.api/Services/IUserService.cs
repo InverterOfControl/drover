@@ -8,5 +8,6 @@ namespace Drover.Api.Services
 {
   internal interface IUserService
   {
+    
   }
 }
