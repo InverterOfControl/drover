@@ -1,0 +1,15 @@
+C:\work\Drover\drover.api\bin\Debug\net6.0\drover.api.deps.json
+C:\work\Drover\drover.api\bin\Debug\net6.0\drover.api.dll
+C:\work\Drover\drover.api\bin\Debug\net6.0\ref\drover.api.dll
+C:\work\Drover\drover.api\bin\Debug\net6.0\drover.api.pdb
+C:\work\Drover\drover.api\obj\Debug\net6.0\drover.api.csproj.AssemblyReference.cache
+C:\work\Drover\drover.api\obj\Debug\net6.0\drover.api.GeneratedMSBuildEditorConfig.editorconfig
+C:\work\Drover\drover.api\obj\Debug\net6.0\drover.api.AssemblyInfoInputs.cache
+C:\work\Drover\drover.api\obj\Debug\net6.0\drover.api.AssemblyInfo.cs
+C:\work\Drover\drover.api\obj\Debug\net6.0\drover.api.csproj.CoreCompileInputs.cache
+C:\work\Drover\drover.api\obj\Debug\net6.0\drover.api.dll
+C:\work\Drover\drover.api\obj\Debug\net6.0\ref\drover.api.dll
+C:\work\Drover\drover.api\obj\Debug\net6.0\drover.api.pdb
+C:\work\Drover\drover.api\bin\Debug\net6.0\Drover.Contracts.dll
+C:\work\Drover\drover.api\bin\Debug\net6.0\Drover.Contracts.pdb
+C:\work\Drover\drover.api\obj\Debug\net6.0\drover.api.csproj.CopyComplete

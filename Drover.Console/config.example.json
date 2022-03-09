@@ -1,0 +1,6 @@
+{
+  "BugherdConfig": {
+    "ApiKey": "your api key",
+    "BaseUri": "https://www.bugherd.com"
+  }
+}
