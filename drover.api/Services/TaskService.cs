@@ -1,28 +1,43 @@
-﻿using Drover.Api.Factories;
+﻿using Drover.Api.Endpoints;
+using Drover.Api.Factories;
 using Drover.Contracts.Tasks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Drover.Api.Services
 {
   public class TaskService : BaseService, ITaskService
   {
-    public TaskService(IBugherdConnection connection) : base(connection)
+    private readonly ITaskApi _api;
+
+    internal TaskService(IBugherdConnection connection) : base(connection)
     {
+      _api = CreateApi<ITaskApi>();
+    }
+
+    public async Task<DetailedTask> GetLocalTask(long projectId, long taskId)
+    {
+      var request = new TasksRequest { ProjectId = projectId, TaskId = taskId };
+
+      var response = await _api.GetLocalTask(request);
+
+      return response.Task;
     }
 
     public async Task<IList<Contracts.Tasks.Task>> GetProjectTasks(long projectId)
     {
-      var service = CreateBugherdApi();
-
       var request = new TasksRequest { ProjectId = projectId };
 
-      var response = await service.GetTasks(request);
+      var response = await _api.GetTasks(request);
 
       return response.Tasks;
+    }
+
+    public async Task<DetailedTask> GetTask(long projectId, long taskId)
+    {
+      var request = new TasksRequest { ProjectId = projectId, TaskId = taskId };
+
+      var response = await _api.GetTask(request);
+
+      return response.Task;
     }
   }
 }

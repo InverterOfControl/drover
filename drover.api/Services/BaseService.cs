@@ -14,11 +14,11 @@ namespace Drover.Api.Services
 
     }
 
-    internal IBugherdApi CreateBugherdApi()
+    internal T CreateApi<T>()
     {
       var handler = new AuthHandler(_connection.ApiKey, "x");
 
-      var service = RestService.For<IBugherdApi>(new HttpClient(handler)
+      var service = RestService.For<T>(new HttpClient(handler)
       {
         BaseAddress = new Uri(_connection.BaseUri)
       });

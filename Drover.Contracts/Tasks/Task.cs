@@ -42,7 +42,7 @@ namespace Drover.Contracts.Tasks
     public object ExternalId { get; set; }
 
     [JsonPropertyName("requester_id")]
-    public long RequesterId { get; set; }
+    public long? RequesterId { get; set; }
 
     [JsonPropertyName("requester_email")]
     public string RequesterEmail { get; set; }

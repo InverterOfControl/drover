@@ -2,7 +2,7 @@
 
 namespace Drover.Api.Services
 {
-  internal interface IOrganisationService
+  public interface IOrganisationService
   {
     Task<Organization> GetOrganisation();
   }

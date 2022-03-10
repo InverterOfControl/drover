@@ -1,4 +1,4 @@
-﻿using Refit;
+﻿using Drover.Api.Services;
 
 namespace Drover.Api.Factories
 {
@@ -7,11 +7,31 @@ namespace Drover.Api.Factories
     public string ApiKey { get; init; }
     public string BaseUri { get; init; }
 
-    public BugherdConnection(string apiKey, string baseUri)
+    internal BugherdConnection(string apiKey, string baseUri)
     {
       ApiKey = apiKey;
 
       BaseUri = baseUri;
+    }
+
+    public IOrganisationService CreateOrganisationService()
+    {
+      return new OrganisationService(this);
+    }
+
+    public ITaskService CreateTaskService()
+    {
+      return new TaskService(this);
+    }
+
+    public IUsersService CreateUsersService()
+    {
+      return new UsersService(this);
+    }
+
+    public IProjectService CreateProjectService()
+    {
+      return new ProjectService(this);
     }
   }
 }

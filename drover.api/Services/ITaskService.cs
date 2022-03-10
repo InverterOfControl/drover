@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Drover.Api.Services
+﻿namespace Drover.Api.Services
 {
   public interface ITaskService
   {
-    Task<IList<Drover.Contracts.Tasks.Task>> GetProjectTasks(long projectId);
+    Task<IList<Contracts.Tasks.Task>> GetProjectTasks(long projectId);
+
+    Task<Contracts.Tasks.DetailedTask> GetTask(long projectId, long taskId);
+
+    Task<Contracts.Tasks.DetailedTask> GetLocalTask(long projectId, long taskId);
   }
 }

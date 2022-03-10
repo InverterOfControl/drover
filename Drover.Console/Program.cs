@@ -1,5 +1,4 @@
 ﻿using Drover.Api.Factories;
-using Drover.Api.Services;
 using Drover.Sample;
 using Microsoft.Extensions.Configuration;
 
@@ -13,7 +12,8 @@ var bugherdConfig = config.GetSection("BugherdConfig").Get<BugherdConfig>();
 
 var connection = ConnectionFactory.CreateConnection(bugherdConfig.ApiKey, bugherdConfig.BaseUri);
 
-var projectService = new ProjectService(connection);
+
+var projectService = connection.CreateProjectService();
 
 var projects = await projectService.GetProjects();
 
@@ -23,12 +23,20 @@ var gasagProject = projects.FirstOrDefault(p => p.Name == "Gasag.de");
 
 if(gasagProject is not null)
 {
-  var tasksservice = new TaskService(connection);
-
+  var tasksservice = connection.CreateTaskService();
+  
   var tasks = await tasksservice.GetProjectTasks(gasagProject.Id.Value);
 
+  var tasksWithoutRequester = tasks.Where(p => p.RequesterId is null);
+
   Console.WriteLine(string.Join(",", tasks.Select(task => task.Description)));
+
+
+  var detailedTask = await tasksservice.GetTask(gasagProject.Id.Value, 14973207);
+
+  Console.WriteLine(detailedTask.Description);
 }
+
 
 //var organisationService = new OrganisationService(connection);
 

@@ -1,3 +1,4 @@
+using Drover.Api.Endpoints;
 using Drover.Api.Factories;
 using Drover.Contracts.Projects;
 
@@ -5,32 +6,29 @@ namespace Drover.Api.Services
 {
   public class ProjectService : BaseService, IProjectService
   {
-    public ProjectService(IBugherdConnection connection) : base(connection)
+    private readonly IProjectApi _api;
+
+    internal ProjectService(IBugherdConnection connection) : base(connection)
     {
+      _api = CreateApi<IProjectApi>();
     }
 
     public async Task AddGuest(int projectId, int guestId, string email)
     {
-      var service = CreateBugherdApi();
-
       var request = new AddGuestRequest { Email = email, ProjectId = projectId, UserId = guestId };
 
-      var response = await service.AddGuest(request);
+      var response = await _api.AddGuest(request);
     }
 
     public async Task AddMember(int projectId, int memberId)
     {
-      var service = CreateBugherdApi();
-
       var request = new AddMemberRequest { UserId = memberId, ProjectId = projectId };
 
-      var response = await service.AddMember(request);
+      var response = await _api.AddMember(request);
     }
 
     public async Task CreateProject(string name, string websiteUrl, bool isActive, bool isPublic, bool guestsSeeGuests)
     {
-      var service = CreateBugherdApi();
-
       var project = new NewProject
       {
         GuestsSeeGuests = guestsSeeGuests,
@@ -42,49 +40,41 @@ namespace Drover.Api.Services
 
       var request = new CreateProjectRequest { Project = project };
 
-      var response = await service.CreateProject(request);
+      var response = await _api.CreateProject(request);
     }
 
     public async Task<List<Project>> GetActiveProjects(int? page = null)
     {
-      var service = CreateBugherdApi();
-
       var request = new ProjectsRequest { Page = page };
 
-      var response = await service.GetActiveProjects(request);
+      var response = await _api.GetActiveProjects(request);
 
       return response.Projects;
     }
 
     public async Task<Project> GetProject(int id)
     {
-      var service = CreateBugherdApi();
-
       var request = new SingleProjectRequest { Id = id };
 
-      var response = await service.GetProject(request);
+      var response = await _api.GetProject(request);
 
       return response.Project;
     }
 
     public async Task<List<Project>> GetProjects(int? page = null)
     {
-      var service = CreateBugherdApi();
-
       var request = new ProjectsRequest { Page = page };
 
-      var response = await service.GetProjects(request);
+      var response = await _api.GetProjects(request);
 
       return response.Projects;
     }
 
     public async Task DeleteProject(int projectId)
     {
-      var service = CreateBugherdApi();
-
       var request = new DeleteProjectRequest { ProjectId = projectId };
 
-      var response = await service.DeleteProject(request);
+      var response = await _api.DeleteProject(request);
     }
   }
 }

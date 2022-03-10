@@ -1,4 +1,4 @@
-﻿using Refit;
+﻿using Drover.Api.Services;
 
 namespace Drover.Api.Factories
 {
@@ -7,5 +7,13 @@ namespace Drover.Api.Factories
     string ApiKey { get; init; }
 
     string BaseUri { get; init; }
+
+    IOrganisationService CreateOrganisationService();
+
+    ITaskService CreateTaskService();
+
+    IUsersService CreateUsersService();
+
+    IProjectService CreateProjectService();
   }
 }

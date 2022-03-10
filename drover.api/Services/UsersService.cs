@@ -1,37 +1,35 @@
-﻿using Drover.Api.Factories;
+﻿using Drover.Api.Endpoints;
+using Drover.Api.Factories;
 using Drover.Contracts.Users;
 
 namespace Drover.Api.Services
 {
   public class UsersService : BaseService, IUsersService
   {
-    public UsersService(IBugherdConnection connection) : base(connection)
+    private readonly IUserApi _api;
+
+    internal UsersService(IBugherdConnection connection) : base(connection)
     {
+      _api = CreateApi<IUserApi>();
     }
 
     public async Task<List<User>> GetGuests()
     {
-      var service = CreateBugherdApi();
-
-      var users = await service.GetGuests();
+      var users = await _api.GetGuests();
 
       return users.Users;
     }
 
     public async Task<List<User>> GetMembers()
     {
-      var service = CreateBugherdApi();
-
-      var members = await service.GetMembers();
+      var members = await _api.GetMembers();
 
       return members.Users;
     }
 
     public async Task<List<User>> GetUsers()
     {
-      var service = CreateBugherdApi();
-
-      var guests = await service.GetUsers();
+      var guests = await _api.GetUsers();
 
       return guests.Users;
     }
