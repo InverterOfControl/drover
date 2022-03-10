@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Drover.Contracts.Shared;
+using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
@@ -13,11 +14,6 @@ namespace Drover.Contracts.Users
     public Meta Meta { get; set; }
   }
 
-  public class Meta
-  {
-    [JsonPropertyName("count")]
-    public long Count { get; set; }
-  }
   public class User
   {
     [JsonPropertyName("id")]
