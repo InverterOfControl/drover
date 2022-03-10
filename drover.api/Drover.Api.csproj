@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>true</IsPackable>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
   
@@ -15,8 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Drover.Contracts\Drover.Contracts.csproj">
-      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-      <IncludeAssets>Drover.Contracts.dll</IncludeAssets>
     </ProjectReference>
   </ItemGroup>
 
