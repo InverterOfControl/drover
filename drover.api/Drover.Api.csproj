@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -14,7 +14,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Drover.Contracts\Drover.Contracts.csproj" />
+    <ProjectReference Include="..\Drover.Contracts\Drover.Contracts.csproj">
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <IncludeAssets>Drover.Contracts.dll</IncludeAssets>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.md" Pack="true" PackagePath="LICENSE.md"/>
   </ItemGroup>
 
 </Project>
