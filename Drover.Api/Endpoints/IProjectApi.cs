@@ -15,7 +15,7 @@ namespace Drover.Api.Endpoints
     Task<SingleProjectResponse> GetProject(SingleProjectRequest request);
 
     [Post("/api_v2/projects.json")]
-    Task<CreateProjectResponse> CreateProject(CreateProjectRequest request);
+    Task<CreateProjectResponse> CreateProject([Body] CreateProjectRequest request);
 
     [Post("/api_v2/projects/{request.project_id}/add_member.json")]
     Task<AddMemberResponse> AddMember(AddMemberRequest request);

@@ -16,7 +16,14 @@ namespace Drover.Api.Services
 
     internal T CreateApi<T>()
     {
+
+#if DEBUG
+      var authHandler = new AuthHandler(_connection.ApiKey, "x");
+      var handler = new HttpLoggingHandler(authHandler);
+
+#else
       var handler = new AuthHandler(_connection.ApiKey, "x");
+#endif
 
       var service = RestService.For<T>(new HttpClient(handler)
       {

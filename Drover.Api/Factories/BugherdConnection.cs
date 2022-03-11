@@ -33,5 +33,15 @@ namespace Drover.Api.Factories
     {
       return new ProjectService(this);
     }
+
+    public IColumnService CreateColumnService()
+    {
+      return new ColumnService(this);
+    }
+
+    public ICommentService CreateCommentService()
+    {
+      return new CommentService(this);
+    }
   }
 }

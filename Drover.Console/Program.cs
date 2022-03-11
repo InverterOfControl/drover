@@ -21,22 +21,30 @@ Console.WriteLine(string.Join(",", projects.Select(p => p.Name)));
 
 var gasagProject = projects.FirstOrDefault(p => p.Name == "Gasag.de");
 
-if(gasagProject is not null)
+var commentService = connection.CreateCommentService();
+
+var comments = await commentService.GetComments(gasagProject.Id.Value, 14973207);
+
+foreach(var commentItem in comments)
 {
-  var tasksservice = connection.CreateTaskService();
-  
-  var tasks = await tasksservice.GetProjectTasks(gasagProject.Id.Value);
-
-  var tasksWithoutRequester = tasks.Where(p => p.RequesterId is null);
-
-  Console.WriteLine(string.Join(",", tasks.Select(task => task.Description)));
-
-
-  var detailedTask = await tasksservice.GetTask(gasagProject.Id.Value, 14973207);
-
-  Console.WriteLine(detailedTask.Description);
+  Console.WriteLine(commentItem.Text);
 }
 
+  //if (gasagProject is not null)
+  //{
+  //  var tasksservice = connection.CreateTaskService();
+
+  //  var tasks = await tasksservice.GetProjectTasks(gasagProject.Id.Value);
+
+  //  var tasksWithoutRequester = tasks.Where(p => p.RequesterId is null);
+
+  //  Console.WriteLine(string.Join(",", tasks.Select(task => task.Description)));
+
+
+  //  var detailedTask = await tasksservice.GetTask(gasagProject.Id.Value, 14973207);
+
+  //  Console.WriteLine(detailedTask.Description);
+  //}
 
 //var organisationService = new OrganisationService(connection);
 

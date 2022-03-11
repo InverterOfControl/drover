@@ -22,5 +22,11 @@ namespace Drover.Api.Endpoints
 
     [Get("/api_v2/projects/{request.project_id}/local_tasks/{request.task_id}.json")]
     Task<TaskResponse> GetLocalTask(TasksRequest request);
+
+    [Post("/api_v2/projects/{request.project_id}/tasks.json")]
+    Task<TaskResponse> CreateTask(CreateTaskRequest request);
+
+    [Put("/api_v2/projects/{request.project_id}/tasks/{request.task_id}.json")]
+    Task<TaskResponse> UpdateTask(UpdateTaskRequest request);
   }
 }

@@ -15,5 +15,8 @@ namespace Drover.Api.Factories
     IUsersService CreateUsersService();
 
     IProjectService CreateProjectService();
+
+    IColumnService CreateColumnService();
+    ICommentService CreateCommentService();
   }
 }
