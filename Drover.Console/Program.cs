@@ -19,16 +19,16 @@ var projects = await projectService.GetProjects();
 
 Console.WriteLine(string.Join(",", projects.Select(p => p.Name)));
 
-var gasagProject = projects.FirstOrDefault(p => p.Name == "Gasag.de");
+//var gasagProject = projects.FirstOrDefault(p => p.Name == "Gasag.de");
 
-var commentService = connection.CreateCommentService();
+//var commentService = connection.CreateCommentService();
 
-var comments = await commentService.GetComments(gasagProject.Id.Value, 14973207);
+//var comments = await commentService.GetComments(gasagProject.Id.Value, 14973207);
 
-foreach(var commentItem in comments)
-{
-  Console.WriteLine(commentItem.Text);
-}
+//foreach(var commentItem in comments)
+//{
+//  Console.WriteLine(commentItem.Text);
+//}
 
   //if (gasagProject is not null)
   //{
