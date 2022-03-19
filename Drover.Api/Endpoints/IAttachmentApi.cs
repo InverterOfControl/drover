@@ -44,6 +44,6 @@ namespace Drover.Api.Endpoints
         /// </summary>
         /// <returns></returns>
         [Delete("/api_v2/projects/{request.project_id}/tasks/{request.task_id}/attachments/{request.id}.json")]
-        Task DeleteAttachment(DeleteAttachmentRequest request);
+        Task<DeleteAttachmentResponse> DeleteAttachment(DeleteAttachmentRequest request);
     }
 }

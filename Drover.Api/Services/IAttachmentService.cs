@@ -12,6 +12,13 @@ namespace Drover.Api.Services
 
         Task<Attachment> UploadAttachment(long projectId, long taskId, Stream data);
 
-        Task DeleteAttachment(long projectId, long taskId, long attachmentId);
+        /// <summary>
+        /// Deletes an attachment.
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="taskId"></param>
+        /// <param name="attachmentId"></param>
+        /// <returns>A <see cref="bool"/> that indicates wether the delete-operation was successful or not.</returns>
+        Task<bool> DeleteAttachment(long projectId, long taskId, long attachmentId);
     }
 }

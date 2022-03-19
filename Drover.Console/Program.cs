@@ -19,6 +19,12 @@ var projects = await projectService.GetProjects();
 
 Console.WriteLine(string.Join(",", projects.Select(p => p.Name)));
 
+var attachmentService = connection.CreateAttachmentService();
+
+await attachmentService.CreateAttachment(projects.FirstOrDefault().Id.Value, 15323766, "myfile", new Uri("https://i.imgur.com/6lbq55r.jpg"));
+
+
+
 //var gasagProject = projects.FirstOrDefault(p => p.Name == "Gasag.de");
 
 //var commentService = connection.CreateCommentService();

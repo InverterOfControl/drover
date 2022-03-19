@@ -15,23 +15,49 @@ namespace Drover.Api.Services
 
         public async Task<Attachment> CreateAttachment(long projectId, long taskId, string filename, Uri fileUri)
         {
-            var request = new CreateAttachmentRequest();
+            var request = new CreateAttachmentRequest
+            {
+                ProjectId = projectId,
+                TaskId = taskId,
+                Attachment = new Attachment
+                {
+                    FileName = filename,
+                    Url = fileUri.ToString(),
+                }
+            };
 
             var response = await _api.CreateAttachment(request);
 
             return response.Attachment;
         }
 
-        public async Task DeleteAttachment(long projectId, long taskId, long attachmentId)
+        public async Task<bool> DeleteAttachment(long projectId, long taskId, long attachmentId)
         {
-            var request = new DeleteAttachmentRequest();
+            var request = new DeleteAttachmentRequest { 
+                ProjectId = projectId,
+                TaskId = taskId,
+                AttachmentId = attachmentId
+            };
 
-            await _api.DeleteAttachment(request);
+            try
+            {
+              var response = await _api.DeleteAttachment(request);
+              return response.Success;
+            }
+            catch(Exception)
+            {
+                return false;
+            }
         }
 
         public async Task<Attachment> GetAttachment(long projectId, long taskId, long attachmentId)
         {
-            var request = new ShowAttachmentRequest();
+            var request = new ShowAttachmentRequest
+            {
+                ProjectId = projectId,
+                TaskId = taskId,
+                AttachmentId = attachmentId
+            };
 
             var response = await _api.ShowAttachment(request);
 
@@ -40,7 +66,11 @@ namespace Drover.Api.Services
 
         public async Task<IList<Attachment>> GetAttachments(long projectId, long taskId)
         {
-            var request = new ListAttachmentRequest();
+            var request = new ListAttachmentRequest
+            {
+                ProjectId= projectId,
+                TaskId= taskId
+            };
 
             var response = await _api.ListAttachments(request);
 

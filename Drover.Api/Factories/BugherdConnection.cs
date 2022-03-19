@@ -2,46 +2,51 @@
 
 namespace Drover.Api.Factories
 {
-  internal class BugherdConnection : IBugherdConnection
-  {
-    public string ApiKey { get; init; }
-    public string BaseUri { get; init; }
-
-    internal BugherdConnection(string apiKey, string baseUri)
+    internal class BugherdConnection : IBugherdConnection
     {
-      ApiKey = apiKey;
+        public string ApiKey { get; init; }
+        public string BaseUri { get; init; }
 
-      BaseUri = baseUri;
-    }
+        internal BugherdConnection(string apiKey, string baseUri)
+        {
+            ApiKey = apiKey;
 
-    public IOrganisationService CreateOrganisationService()
-    {
-      return new OrganisationService(this);
-    }
+            BaseUri = baseUri;
+        }
 
-    public ITaskService CreateTaskService()
-    {
-      return new TaskService(this);
-    }
+        public IOrganisationService CreateOrganisationService()
+        {
+            return new OrganisationService(this);
+        }
 
-    public IUsersService CreateUsersService()
-    {
-      return new UsersService(this);
-    }
+        public ITaskService CreateTaskService()
+        {
+            return new TaskService(this);
+        }
 
-    public IProjectService CreateProjectService()
-    {
-      return new ProjectService(this);
-    }
+        public IUsersService CreateUsersService()
+        {
+            return new UsersService(this);
+        }
 
-    public IColumnService CreateColumnService()
-    {
-      return new ColumnService(this);
-    }
+        public IProjectService CreateProjectService()
+        {
+            return new ProjectService(this);
+        }
 
-    public ICommentService CreateCommentService()
-    {
-      return new CommentService(this);
+        public IColumnService CreateColumnService()
+        {
+            return new ColumnService(this);
+        }
+
+        public ICommentService CreateCommentService()
+        {
+            return new CommentService(this);
+        }
+
+        public IAttachmentService CreateAttachmentService()
+        {
+            return new AttachmentService(this);
+        }
     }
-  }
 }
