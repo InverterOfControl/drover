@@ -1,15 +1,12 @@
 ﻿using Drover.Api.Endpoints;
 using Drover.Api.Factories;
 using Drover.Contracts.Columns;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Drover.Api.Services
 {
-  public class ColumnService : BaseService, IColumnService
+    public class ColumnService : BaseService, IColumnService
   {
     private readonly IColumnApi _api;
 

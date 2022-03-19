@@ -4,8 +4,8 @@ namespace Drover.Api.Factories
 {
     internal class BugherdConnection : IBugherdConnection
     {
-        public string ApiKey { get; init; }
-        public string BaseUri { get; init; }
+        public string ApiKey { get; private set; }
+        public string BaseUri { get; private set; }
 
         internal BugherdConnection(string apiKey, string baseUri)
         {

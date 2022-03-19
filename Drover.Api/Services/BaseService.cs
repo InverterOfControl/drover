@@ -1,6 +1,8 @@
 ﻿using Drover.Api.Factories;
 using Drover.Api.Handler;
 using Refit;
+using System;
+using System.Net.Http;
 
 namespace Drover.Api.Services
 {

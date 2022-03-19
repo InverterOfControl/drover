@@ -1,6 +1,10 @@
 ﻿using Drover.Api.Endpoints;
 using Drover.Api.Factories;
 using Drover.Contracts.Attachments;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Drover.Api.Services
 {

@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drover.Api", "drover.api\Drover.Api.csproj", "{B144562B-217D-4E92-A3C4-EB861F38A5AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drover.Api", "drover.api\Drover.Api.csproj", "{B144562B-217D-4E92-A3C4-EB861F38A5AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drover.Sample", "Drover.Console\Drover.Sample.csproj", "{DD8BC696-2A24-4A9C-AB7E-730B75B70C8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drover.Sample", "Drover.Console\Drover.Sample.csproj", "{DD8BC696-2A24-4A9C-AB7E-730B75B70C8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drover.Contracts", "Drover.Contracts\Drover.Contracts.csproj", "{09282BCA-37EB-4B09-8882-66F0C7ED18C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drover.Contracts", "Drover.Contracts\Drover.Contracts.csproj", "{09282BCA-37EB-4B09-8882-66F0C7ED18C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drover.Tests", "Drover.Tests\Drover.Tests.csproj", "{6CA26A10-3E83-42CB-8D91-C2DFE726BCA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{09282BCA-37EB-4B09-8882-66F0C7ED18C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09282BCA-37EB-4B09-8882-66F0C7ED18C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09282BCA-37EB-4B09-8882-66F0C7ED18C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CA26A10-3E83-42CB-8D91-C2DFE726BCA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CA26A10-3E83-42CB-8D91-C2DFE726BCA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CA26A10-3E83-42CB-8D91-C2DFE726BCA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CA26A10-3E83-42CB-8D91-C2DFE726BCA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -21,16 +21,7 @@ namespace Drover.Contracts.Projects
     [JsonPropertyName("name")]
     public string Name { get; set; }
 
-    //[JsonPropertyName("is_active")]
-    //public bool IsActive { get; set; }
-
-    //[JsonPropertyName("is_public")]
-    //public bool IsPublic { get; set; }
-
     [JsonPropertyName("has_custom_columns")]
     public bool HasCustomColumns { get; set; }
-
-    //[JsonPropertyName("guests_see_guests")]
-    //public bool GuestsSeeGuests { get; set; }
   }
 }

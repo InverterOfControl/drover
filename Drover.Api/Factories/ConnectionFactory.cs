@@ -1,4 +1,6 @@
-﻿namespace Drover.Api.Factories
+﻿using System;
+
+namespace Drover.Api.Factories
 {
   public static class ConnectionFactory
   {

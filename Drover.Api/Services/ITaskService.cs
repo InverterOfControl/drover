@@ -1,4 +1,7 @@
-﻿namespace Drover.Api.Services
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace Drover.Api.Services
 {
   public interface ITaskService
   {

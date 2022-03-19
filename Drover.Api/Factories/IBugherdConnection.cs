@@ -4,9 +4,9 @@ namespace Drover.Api.Factories
 {
     public interface IBugherdConnection
     {
-        string ApiKey { get; init; }
+        string ApiKey { get; }
 
-        string BaseUri { get; init; }
+        string BaseUri { get; }
 
         IOrganisationService CreateOrganisationService();
 

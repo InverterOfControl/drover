@@ -1,12 +1,11 @@
 ﻿using Drover.Api.Endpoints;
 using Drover.Api.Factories;
-using Drover.Api.Handler;
 using Drover.Contracts.Organisation;
-using Refit;
+using System.Threading.Tasks;
 
 namespace Drover.Api.Services
 {
-  public class OrganisationService : BaseService, IOrganisationService
+    public class OrganisationService : BaseService, IOrganisationService
   {
 
     private readonly IOrganisazionApi _api;

@@ -1,15 +1,12 @@
 ﻿using Drover.Api.Endpoints;
 using Drover.Api.Factories;
 using Drover.Contracts.Comments;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Drover.Api.Services
 {
-  public class CommentService : BaseService, ICommentService
+    public class CommentService : BaseService, ICommentService
   {
     private readonly ICommentApi _api;
 

@@ -1,5 +1,6 @@
 ﻿using Drover.Contracts.Users;
 using Refit;
+using System.Threading.Tasks;
 
 namespace Drover.Api.Endpoints
 {
