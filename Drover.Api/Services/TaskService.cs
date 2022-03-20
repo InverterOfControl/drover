@@ -2,6 +2,7 @@
 using Drover.Api.Factories;
 using Drover.Contracts.Tasks;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Drover.Api.Services
@@ -15,29 +16,29 @@ namespace Drover.Api.Services
       _api = CreateApi<ITaskApi>();
     }
 
-    public async Task<DetailedTask> GetLocalTask(long projectId, long taskId)
+    public async Task<DetailedTask> GetLocalTask(long projectId, long taskId, CancellationToken cancellationToken)
     {
       var request = new TasksRequest { ProjectId = projectId, TaskId = taskId };
 
-      var response = await _api.GetLocalTask(request);
+      var response = await _api.GetLocalTask(request, cancellationToken).ConfigureAwait(false);
 
       return response.Task;
     }
 
-    public async Task<IList<Contracts.Tasks.Task>> GetProjectTasks(long projectId)
+    public async Task<IList<Contracts.Tasks.Task>> GetProjectTasks(long projectId, CancellationToken cancellationToken)
     {
       var request = new TasksRequest { ProjectId = projectId };
 
-      var response = await _api.GetTasks(request);
+      var response = await _api.GetTasks(request, cancellationToken).ConfigureAwait(false);
 
       return response.Tasks;
     }
 
-    public async Task<DetailedTask> GetTask(long projectId, long taskId)
+    public async Task<DetailedTask> GetTask(long projectId, long taskId, CancellationToken cancellationToken)
     {
       var request = new TasksRequest { ProjectId = projectId, TaskId = taskId };
 
-      var response = await _api.GetTask(request);
+      var response = await _api.GetTask(request, cancellationToken).ConfigureAwait(false);
 
       return response.Task;
     }

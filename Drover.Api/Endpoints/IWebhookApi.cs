@@ -1,13 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace Drover.Api.Endpoints
 {
     internal interface IWebhookApi
     {
-        Task ListWebhooks();
+        Task ListWebhooks(CancellationToken cancellationToken);
 
-        Task CreateWebhook();
+        Task CreateWebhook(CancellationToken cancellationToken);
 
-        Task DeleteWebhook();
+        Task DeleteWebhook(CancellationToken cancellationToken);
     }
 }

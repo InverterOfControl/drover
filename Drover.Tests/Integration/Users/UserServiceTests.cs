@@ -11,7 +11,7 @@ namespace Drover.Tests.Integration.Users
         {
             var userService = Connection.BugherdConnection.CreateUsersService();
 
-            var users = await userService.GetUsers();
+            var users = await userService.GetUsers(new System.Threading.CancellationToken());
 
             Assert.NotEmpty(users);
         }
@@ -21,7 +21,7 @@ namespace Drover.Tests.Integration.Users
         {
             var userService = Connection.BugherdConnection.CreateUsersService();
 
-            var guests = await userService.GetGuests();
+            var guests = await userService.GetGuests(new System.Threading.CancellationToken());
 
             Assert.Empty(guests);
         }
@@ -31,7 +31,7 @@ namespace Drover.Tests.Integration.Users
         {
             var userService = Connection.BugherdConnection.CreateUsersService();
 
-            var members = await userService.GetMembers();
+            var members = await userService.GetMembers(new System.Threading.CancellationToken());
 
             Assert.NotEmpty(members);
         }

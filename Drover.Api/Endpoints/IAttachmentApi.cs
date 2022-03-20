@@ -1,5 +1,6 @@
 ﻿using Drover.Contracts.Attachments;
 using Refit;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Drover.Api.Endpoints
@@ -11,21 +12,21 @@ namespace Drover.Api.Endpoints
         /// </summary>
         /// <returns></returns>
         [Get("/api_v2/projects/{request.project_id}/tasks/{request.task_id}/attachments.json")]
-        Task<MultipleAttachmentResponse> ListAttachments(ListAttachmentRequest request);
+        Task<MultipleAttachmentResponse> ListAttachments(ListAttachmentRequest request, CancellationToken cancellationToken);
 
         /// <summary>
         /// Get detail for specific attachment.
         /// </summary>
         /// <returns></returns>
         [Get("/api_v2/projects/{request.project_id}/tasks/{request.task_id}/attachments/{request.id}.json")]
-        Task<AttachmentResponse> ShowAttachment(ShowAttachmentRequest request);
+        Task<AttachmentResponse> ShowAttachment(ShowAttachmentRequest request, CancellationToken cancellationToken);
 
         /// <summary>
         /// Adds a new attachment to the specified task using an existing URL.
         /// </summary>
         /// <returns></returns>
         [Post("/api_v2/projects/{request.project_id}/tasks/{request.task_id}/attachments.json")]
-        Task<AttachmentResponse> CreateAttachment(CreateAttachmentRequest request);
+        Task<AttachmentResponse> CreateAttachment(CreateAttachmentRequest request, CancellationToken cancellationToken);
 
         /// <summary>
         /// Upload a new attachment and add it to the specified task. The file contents need to be specified as the POST data on this request.
@@ -33,13 +34,13 @@ namespace Drover.Api.Endpoints
         /// </summary>
         /// <returns></returns>
         [Post("/api_v2/projects/{request.project_id}/tasks/{request.task_id}/attachments/upload")]
-        Task<AttachmentResponse> UploadAttachment(UploadAttachmentRequest request);
+        Task<AttachmentResponse> UploadAttachment(UploadAttachmentRequest request, CancellationToken cancellationToken);
 
         /// <summary>
         /// Delete an attachment from a task. Note that this action is permanent and cannot be undone.
         /// </summary>
         /// <returns></returns>
         [Delete("/api_v2/projects/{request.project_id}/tasks/{request.task_id}/attachments/{request.id}.json")]
-        Task<DeleteAttachmentResponse> DeleteAttachment(DeleteAttachmentRequest request);
+        Task<DeleteAttachmentResponse> DeleteAttachment(DeleteAttachmentRequest request, CancellationToken cancellationToken);
     }
 }

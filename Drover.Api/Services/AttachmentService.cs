@@ -4,6 +4,7 @@ using Drover.Contracts.Attachments;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Drover.Api.Services
@@ -17,7 +18,7 @@ namespace Drover.Api.Services
             _api = CreateApi<IAttachmentApi>();
         }
 
-        public async Task<Attachment> CreateAttachment(long projectId, long taskId, string filename, Uri fileUri)
+        public async Task<Attachment> CreateAttachment(long projectId, long taskId, string filename, Uri fileUri, CancellationToken cancellationToken)
         {
             var request = new CreateAttachmentRequest
             {
@@ -30,12 +31,12 @@ namespace Drover.Api.Services
                 }
             };
 
-            var response = await _api.CreateAttachment(request);
+            var response = await _api.CreateAttachment(request, cancellationToken).ConfigureAwait(false);
 
             return response.Attachment;
         }
 
-        public async Task<bool> DeleteAttachment(long projectId, long taskId, long attachmentId)
+        public async Task<bool> DeleteAttachment(long projectId, long taskId, long attachmentId, CancellationToken cancellationToken)
         {
             var request = new DeleteAttachmentRequest { 
                 ProjectId = projectId,
@@ -45,7 +46,7 @@ namespace Drover.Api.Services
 
             try
             {
-              var response = await _api.DeleteAttachment(request);
+              var response = await _api.DeleteAttachment(request, cancellationToken).ConfigureAwait(false);
               return response.Success;
             }
             catch(Exception)
@@ -54,7 +55,7 @@ namespace Drover.Api.Services
             }
         }
 
-        public async Task<Attachment> GetAttachment(long projectId, long taskId, long attachmentId)
+        public async Task<Attachment> GetAttachment(long projectId, long taskId, long attachmentId, CancellationToken cancellationToken)
         {
             var request = new ShowAttachmentRequest
             {
@@ -63,12 +64,12 @@ namespace Drover.Api.Services
                 AttachmentId = attachmentId
             };
 
-            var response = await _api.ShowAttachment(request);
+            var response = await _api.ShowAttachment(request, cancellationToken).ConfigureAwait(false);
 
             return response.Attachment;
         }
 
-        public async Task<IList<Attachment>> GetAttachments(long projectId, long taskId)
+        public async Task<IList<Attachment>> GetAttachments(long projectId, long taskId, CancellationToken cancellationToken)
         {
             var request = new ListAttachmentRequest
             {
@@ -76,16 +77,16 @@ namespace Drover.Api.Services
                 TaskId= taskId
             };
 
-            var response = await _api.ListAttachments(request);
+            var response = await _api.ListAttachments(request, cancellationToken).ConfigureAwait(false);
 
             return response.Attachments;
         }
 
-        public async Task<Attachment> UploadAttachment(long projectId, long taskId, Stream data)
+        public async Task<Attachment> UploadAttachment(long projectId, long taskId, Stream data, CancellationToken cancellationToken)
         {
             var request = new UploadAttachmentRequest();
 
-            var response = await _api.UploadAttachment(request);
+            var response = await _api.UploadAttachment(request, cancellationToken).ConfigureAwait(false);
 
             return response.Attachment;
         }

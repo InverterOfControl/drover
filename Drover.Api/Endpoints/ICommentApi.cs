@@ -1,5 +1,6 @@
 ﻿using Drover.Contracts.Comments;
 using Refit;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Drover.Api.Endpoints
@@ -7,9 +8,9 @@ namespace Drover.Api.Endpoints
   internal interface ICommentApi
   {
     [Get("/api_v2/projects/{request.project_id}/tasks/{request.task_id}/comments.json")]
-    Task<CommentResponse> ListComments(ListCommentRequest request);
+    Task<CommentResponse> ListComments(ListCommentRequest request, CancellationToken cancellationToken);
 
     [Post("/api_v2/projects/{request.project_id}/tasks/{request.task_id}/comments.json")]
-    Task<SingleCommentResponse> CreateComment(CreateCommentRequest request, [Body] Comment comment);
+    Task<SingleCommentResponse> CreateComment(CreateCommentRequest request, [Body] Comment comment, CancellationToken cancellationToken);
   }
 }

@@ -1,5 +1,6 @@
 ﻿using Drover.Contracts.Users;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Drover.Api.Services
@@ -10,18 +11,18 @@ namespace Drover.Api.Services
         /// Returns a list of all users in your project.
         /// </summary>
         /// <returns></returns>
-        Task<List<User>> GetUsers();
+        Task<List<User>> GetUsers(CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a list of all registered users in your project.
         /// </summary>
         /// <returns></returns>
-        Task<List<User>> GetMembers();
+        Task<List<User>> GetMembers(CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a list of all guests in the project.
         /// </summary>
         /// <returns></returns>
-        Task<List<User>> GetGuests();
+        Task<List<User>> GetGuests(CancellationToken cancellationToken);
     }
 }
