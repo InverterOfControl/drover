@@ -32,8 +32,9 @@ namespace Drover.Api.Endpoints
         /// Note that your upload needs to be reasonable in size as the maximum time the request may take is around 30 seconds.If you have larger uploads please create arrange your own file upload and create the attachment via <see cref="CreateAttachment"/> instead.
         /// </summary>
         /// <returns></returns>
+        [Multipart]
         [Post("/api_v2/projects/{request.project_id}/tasks/{request.task_id}/attachments/upload")]
-        Task<AttachmentResponse> UploadAttachment(UploadAttachmentRequest request);
+        Task<AttachmentResponse> UploadAttachment(UploadAttachmentRequest request, StreamPart fileStream);
 
         /// <summary>
         /// Delete an attachment from a task. Note that this action is permanent and cannot be undone.

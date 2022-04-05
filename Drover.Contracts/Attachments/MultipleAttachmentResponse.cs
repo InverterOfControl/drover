@@ -1,14 +1,15 @@
 ﻿using Drover.Contracts.Shared;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Drover.Contracts.Attachments
 {
-    public class MultipleAttachmentResponse
-    {
-        public IList<Attachment> Attachments { get; set; }
+  public class MultipleAttachmentResponse
+  {
+    [JsonPropertyName("attachments")]
+    public IList<Attachment> Attachments { get; set; }
 
-        public Meta Meta { get; set; }
-    }
+    [JsonPropertyName("meta")]
+    public Meta Meta { get; set; }
+  }
 }
