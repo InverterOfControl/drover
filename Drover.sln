@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drover.Sample", "Drover.Con
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drover.Contracts", "Drover.Contracts\Drover.Contracts.csproj", "{09282BCA-37EB-4B09-8882-66F0C7ED18C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drover.Tests", "Drover.Tests\Drover.Tests.csproj", "{6CA26A10-3E83-42CB-8D91-C2DFE726BCA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drover.Tests", "Drover.Tests\Drover.Tests.csproj", "{6CA26A10-3E83-42CB-8D91-C2DFE726BCA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drover.Logging.Serilog.Extensions", "Drover.Logging.Serilog\Drover.Logging.Serilog.Extensions.csproj", "{30BA8E5E-CB98-438B-83DE-67E9C38400BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6CA26A10-3E83-42CB-8D91-C2DFE726BCA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CA26A10-3E83-42CB-8D91-C2DFE726BCA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CA26A10-3E83-42CB-8D91-C2DFE726BCA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30BA8E5E-CB98-438B-83DE-67E9C38400BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30BA8E5E-CB98-438B-83DE-67E9C38400BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30BA8E5E-CB98-438B-83DE-67E9C38400BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30BA8E5E-CB98-438B-83DE-67E9C38400BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

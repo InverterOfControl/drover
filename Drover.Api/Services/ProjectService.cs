@@ -1,6 +1,7 @@
 using Drover.Api.Endpoints;
 using Drover.Api.Factories;
 using Drover.Contracts.Projects;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace Drover.Api.Services
     public class ProjectService : BaseService, IProjectService
     {
         private readonly IProjectApi _api;
+
+        private ILogger logger => Logging.LogProvider.GetLogger("ProjectService");
 
         internal ProjectService(IBugherdConnection connection) : base(connection)
         {
@@ -66,6 +69,7 @@ namespace Drover.Api.Services
 
         public async Task<List<Project>> GetProjects(int? page, CancellationToken cancellationToken)
         {
+            logger.LogInformation("Calling Projects-Api");
             var request = new ProjectsRequest { Page = page };
 
             var response = await _api.GetProjects(request, cancellationToken).ConfigureAwait(false);

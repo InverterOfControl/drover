@@ -1,6 +1,19 @@
 ﻿using Drover.Api.Factories;
+using Drover.Api.Logging;
+using Drover.Logging.Serilog.Extensions;
 using Drover.Sample;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Serilog;
+
+var log = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .CreateLogger()
+    .AddToDrover();
+
+
+log.Information("test");
 
 var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
