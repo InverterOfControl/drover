@@ -19,5 +19,4 @@ var projects = await projectService.GetProjects();
 
 Console.WriteLine(string.Join(",", projects.Select(p => p.Name)));
 
-
 Console.ReadKey();

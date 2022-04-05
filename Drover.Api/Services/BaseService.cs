@@ -1,8 +1,11 @@
-﻿using Drover.Api.Factories;
+﻿using Drover.Api.Converter;
+using Drover.Api.Factories;
 using Drover.Api.Handler;
 using Refit;
 using System;
 using System.Net.Http;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Drover.Api.Services
 {
@@ -27,10 +30,15 @@ namespace Drover.Api.Services
       var handler = new AuthHandler(_connection.ApiKey, "x");
 #endif
 
+      var jsonSerializerOptions = new JsonSerializerOptions();
+      jsonSerializerOptions.Converters.Add(new EnumToStringConverter(JsonNamingPolicy.CamelCase));
+
       var service = RestService.For<T>(new HttpClient(handler)
       {
         BaseAddress = new Uri(_connection.BaseUri)
-      });
+      },
+        new RefitSettings(new SystemTextJsonContentSerializer(jsonSerializerOptions))
+       );
 
       return service;
     }

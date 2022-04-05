@@ -48,5 +48,10 @@ namespace Drover.Api.Factories
         {
             return new AttachmentService(this);
         }
-    }
+
+        public IWebhookService CreateWebhookService()
+        {
+          return new WebhookService(this);
+        }
+  }
 }
