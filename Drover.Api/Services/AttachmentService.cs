@@ -1,8 +1,6 @@
 ﻿using Drover.Api.Endpoints;
 using Drover.Api.Factories;
-using Drover.Api.Helper;
 using Drover.Contracts.Attachments;
-using Refit;
 using System;
 using System.Collections.Generic;
 using System.IO;
