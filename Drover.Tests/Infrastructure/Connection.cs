@@ -12,9 +12,9 @@ namespace Drover.Tests.Infrastructure
 
         private static IConfiguration config => builder.Build();
 
-        private static BugherdConfig bugherdConfig => config.GetSection("BugherdConfig").Get<BugherdConfig>();
+        public static BugherdConfig BugherdConfig => config.GetSection("BugherdConfig").Get<BugherdConfig>();
 
-        public static IBugherdConnection BugherdConnection => ConnectionFactory.CreateConnection(bugherdConfig.ApiKey, bugherdConfig.BaseUri);
+        public static IBugherdConnection BugherdConnection => ConnectionFactory.CreateConnection(BugherdConfig.ApiKey, BugherdConfig.BaseUri);
 
     }
 }

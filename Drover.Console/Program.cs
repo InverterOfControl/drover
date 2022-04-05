@@ -18,14 +18,4 @@ var projectService = connection.CreateProjectService();
 var projects = await projectService.GetProjects();
 Console.WriteLine(string.Join(",", projects.Select(p => p.Name)));
 
-var attachmentService = connection.CreateAttachmentService();
-
-string source = "test.png";
-long projectid = 265833;
-long taskId = 14973247;
-long attachmentId = 1956457;
-
-await attachmentService.DeleteAttachment(projectid, taskId, attachmentId);
-
-
 Console.ReadKey();

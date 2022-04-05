@@ -95,9 +95,8 @@ namespace Drover.Api.Services
 
       var contentType = ContentTypeHelper.GuessContentType(filename);
 
-      StreamPart fileStreamPart = new StreamPart(data, filename, contentType);
-
-      var response = await _api.UploadAttachment(request, fileStreamPart);
+           
+      var response = await _api.UploadAttachment(request, data);
 
       return response.Attachment;
     }
