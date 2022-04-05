@@ -92,9 +92,6 @@ namespace Drover.Api.Services
         TaskId = taskId,
         FileName = filename
       };
-
-      var contentType = ContentTypeHelper.GuessContentType(filename);
-
            
       var response = await _api.UploadAttachment(request, data);
 
