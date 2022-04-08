@@ -3,8 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>true</IsPackable>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <Authors>InverterOfControl</Authors>
+    <PackageProjectUrl>https://github.com/InverterOfControl/drover/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/InverterOfControl/drover/</RepositoryUrl>
+    <Description>Contracts-Project for Drover. Contains the needed POCOS.</Description>
+    <PackageIcon>drover-logos.jpeg</PackageIcon>
+    <Copyright>Copyright (c) Sascha Laabs 2022</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
