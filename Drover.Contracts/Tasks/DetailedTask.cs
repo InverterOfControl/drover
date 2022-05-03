@@ -131,16 +131,16 @@ namespace Drover.Contracts.Tasks
   public partial class ScreenshotData
   {
     [JsonPropertyName("screenshot_width")]
-    public long ScreenshotWidth { get; set; }
+    public long? ScreenshotWidth { get; set; }
 
     [JsonPropertyName("screenshot_height")]
-    public long ScreenshotHeight { get; set; }
+    public long? ScreenshotHeight { get; set; }
 
     [JsonPropertyName("screenshot_pin_x")]
-    public long ScreenshotPinX { get; set; }
+    public long? ScreenshotPinX { get; set; }
 
     [JsonPropertyName("screenshot_pin_y")]
-    public long ScreenshotPinY { get; set; }
+    public long? ScreenshotPinY { get; set; }
   }
 
   public partial class SelectorInfo
@@ -161,9 +161,9 @@ namespace Drover.Contracts.Tasks
   public partial class Data
   {
     [JsonPropertyName("bugOffsetX")]
-    public double BugOffsetX { get; set; }
+    public double? BugOffsetX { get; set; }
 
     [JsonPropertyName("bugOffsetY")]
-    public double BugOffsetY { get; set; }
+    public double? BugOffsetY { get; set; }
   }
 }
