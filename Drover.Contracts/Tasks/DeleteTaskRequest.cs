@@ -1,17 +1,16 @@
 ﻿using Refit;
-using System.Text.Json.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Drover.Contracts.Tasks
 {
-  public class UpdateTaskRequest
+  public class DeleteTaskRequest
   {
     [AliasAs("project_id")]
     public long ProjectId { get; set; }
 
     [AliasAs("task_id")]
     public long TaskId { get; set; }
-
-    [JsonPropertyName("task")]
-    public NewTask UpdatedTask { get; set; }
   }
 }

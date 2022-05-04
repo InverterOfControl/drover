@@ -49,7 +49,7 @@ namespace Drover.Contracts.Tasks
     public string Status { get; set; }
 
     [JsonPropertyName("priority")]
-    public string Priority { get; set; }
+    public TaskPriority Priority { get; set; }
 
     [JsonPropertyName("closed_at")]
     public DateTimeOffset? ClosedAt { get; set; }
