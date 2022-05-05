@@ -49,7 +49,8 @@ namespace Drover.Contracts.Tasks
     public string Status { get; set; }
 
     [JsonPropertyName("priority")]
-    public TaskPriority Priority { get; set; }
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
+    public TaskPriority Priority { get; set; } = TaskPriority.NotSet;
 
     [JsonPropertyName("closed_at")]
     public DateTimeOffset? ClosedAt { get; set; }
@@ -73,7 +74,7 @@ namespace Drover.Contracts.Tasks
     public Metadata Metadata { get; set; }
 
     [JsonPropertyName("screenshot_data")]
-    public ScreenshotData ScreenshotData { get; set; }
+    public ScreenshotData ScreenshotData { get; set; } = new ScreenshotData();
 
     [JsonPropertyName("requester_os")]
     public string RequesterOs { get; set; }
@@ -88,7 +89,7 @@ namespace Drover.Contracts.Tasks
     public string RequesterResolution { get; set; }
 
     [JsonPropertyName("selector_info")]
-    public SelectorInfo SelectorInfo { get; set; }
+    public SelectorInfo SelectorInfo { get; set; } = new SelectorInfo();
 
     [JsonPropertyName("due_at")]
     public DateTimeOffset? DueAt { get; set; }
@@ -137,10 +138,10 @@ namespace Drover.Contracts.Tasks
     public long? ScreenshotHeight { get; set; }
 
     [JsonPropertyName("screenshot_pin_x")]
-    public long? ScreenshotPinX { get; set; }
+    public float? ScreenshotPinX { get; set; }
 
     [JsonPropertyName("screenshot_pin_y")]
-    public long? ScreenshotPinY { get; set; }
+    public float? ScreenshotPinY { get; set; }
   }
 
   public partial class SelectorInfo
@@ -152,10 +153,10 @@ namespace Drover.Contracts.Tasks
     public string Html { get; set; }
 
     [JsonPropertyName("version")]
-    public long Version { get; set; }
+    public long? Version { get; set; }
 
     [JsonPropertyName("data")]
-    public Data Data { get; set; }
+    public Data Data { get; set; } = new Data();
   }
 
   public partial class Data

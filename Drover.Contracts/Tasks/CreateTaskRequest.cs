@@ -20,7 +20,7 @@ namespace Drover.Contracts.Tasks
     public string Description { get; set; }
 
     [JsonPropertyName("priority")]
-    public TaskPriority Priority { get; set; }
+    public TaskPriority Priority { get; set; } = TaskPriority.NotSet;
 
     [JsonPropertyName("status")]
     public string Status { get; set; }
