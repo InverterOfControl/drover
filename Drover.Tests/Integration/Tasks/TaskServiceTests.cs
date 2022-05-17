@@ -25,6 +25,7 @@ namespace Drover.Tests.Integration.Tasks
         {
           Description = "Testtask",
           RequesterEmail = "test@drover.com",
+          ExternalId = "M123",
           Priority = Contracts.Tasks.TaskPriority.Normal,
           Status = "offen"
         }
@@ -41,7 +42,11 @@ namespace Drover.Tests.Integration.Tasks
       {
         ProjectId = projectId,
         TaskId = newTask.Id,
-        UpdatedTask = new Contracts.Tasks.NewTask { Description = "Updated Description!" }
+        UpdatedTask = new Contracts.Tasks.NewTask {
+          Description = "Updated Description!",
+          Status = "Ist transferiert",
+          Priority = Contracts.Tasks.TaskPriority.Important
+        }
       });
 
       // Retrieve again
