@@ -30,7 +30,7 @@ namespace Drover.Contracts.Tasks
     public long? AssingedTo { get; set; }
 
     [AliasAs("external_id")]
-    public long? ExternalId { get; set; }
+    public string ExternalId { get; set; }
 
     [AliasAs("page")]
     public int? Page { get; set; }

@@ -6,7 +6,7 @@ namespace Drover.Contracts.Attachments
     public class Attachment
     {
         [JsonPropertyName("id")]
-        public long? id { get; set; }
+        public long? Id { get; set; }
 
         [JsonPropertyName("task_id")]
         public long? TaskId { get; set; }

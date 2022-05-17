@@ -1,14 +1,18 @@
-﻿using System.Threading;
+﻿using Drover.Contracts.Webhooks;
+using Refit;
 using System.Threading.Tasks;
 
 namespace Drover.Api.Endpoints
 {
-    internal interface IWebhookApi
+    public interface IWebhookApi
     {
-        Task ListWebhooks(CancellationToken cancellationToken);
+        [Get("/api_v2/webhooks.json")]
+        Task<ListWebhooksResponse> ListWebhooks();
 
-        Task CreateWebhook(CancellationToken cancellationToken);
+        [Post("/api_v2/webhooks.json")]
+        Task<CreateWebhookResponse> CreateWebhook(CreateWebhookRequest request);
 
-        Task DeleteWebhook(CancellationToken cancellationToken);
+        [Delete("/api_v2/webhooks/{request.id}.json")]
+        Task<DeleteWebhookResponse> DeleteWebhook(DeleteWebhookRequest request);
     }
 }

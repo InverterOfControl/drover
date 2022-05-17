@@ -2,22 +2,26 @@
 
 namespace Drover.Api.Factories
 {
-    public interface IBugherdConnection
-    {
-        string ApiKey { get; }
+  public interface IBugherdConnection
+  {
+    string ApiKey { get; }
 
-        string BaseUri { get; }
+    string BaseUri { get; }
 
-        IOrganisationService CreateOrganisationService();
+    IOrganisationService CreateOrganisationService();
 
-        ITaskService CreateTaskService();
+    ITaskService CreateTaskService();
 
-        IUsersService CreateUsersService();
+    IUsersService CreateUsersService();
 
-        IProjectService CreateProjectService();
+    IProjectService CreateProjectService();
 
-        IColumnService CreateColumnService();
-        ICommentService CreateCommentService();
-        IAttachmentService CreateAttachmentService();
-    }
+    IColumnService CreateColumnService();
+
+    ICommentService CreateCommentService();
+
+    IAttachmentService CreateAttachmentService();
+
+    IWebhookService CreateWebhookService();
+  }
 }

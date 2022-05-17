@@ -3,16 +3,29 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>true</IsPackable>
-    <Version>1.0.2</Version>
+    <Version>1.0.8</Version>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <Authors>InverterOfControl</Authors>
+    <PackageProjectUrl>https://github.com/InverterOfControl/drover/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/InverterOfControl/drover/</RepositoryUrl>
+    <Description>Contracts-Project for Drover. Contains the needed POCOS.</Description>
+    <PackageIcon>drover-logos.jpeg</PackageIcon>
+    <Copyright>Copyright (c) Sascha Laabs 2022</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Macross.Json.Extensions" Version="2.2.0" />
     <PackageReference Include="System.Text.Json" Version="6.0.2" />
     <PackageReference Include="Refit" Version="6.3.2" />
   </ItemGroup>
   
   <ItemGroup>
     <None Include="..\LICENSE.md" Pack="true" PackagePath="LICENSE.md" />
+    <None Include="..\Images\drover-logos.jpeg" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 </Project>

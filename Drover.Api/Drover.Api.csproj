@@ -3,8 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>true</IsPackable>
-    <Version>1.0.3</Version>
+    <Version>1.0.8</Version>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <Authors>InverterOfControl</Authors>
+    <PackageProjectUrl>https://github.com/InverterOfControl/drover/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/InverterOfControl/drover/</RepositoryUrl>
+    <PackageTags>Bugherd;Api;SDK</PackageTags>
+    <Description>A wrapper for the Bugherd-Api (V2).</Description>
+    <PackageIcon>drover-logos.jpeg</PackageIcon>
+    <Copyright>Copyright (c) Sascha Laabs 2022</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   
   <ItemGroup>
@@ -18,6 +26,11 @@
 
   <ItemGroup>
     <None Include="..\LICENSE.md" Pack="true" PackagePath="LICENSE.md" />
+    <None Include="..\Images\drover-logos.jpeg" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

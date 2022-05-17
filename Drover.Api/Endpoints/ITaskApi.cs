@@ -29,6 +29,9 @@ namespace Drover.Api.Endpoints
     Task<TaskResponse> CreateTask(CreateTaskRequest request, CancellationToken cancellationToken);
 
     [Put("/api_v2/projects/{request.project_id}/tasks/{request.task_id}.json")]
-    Task<TaskResponse> UpdateTask(UpdateTaskRequest request, CancellationToken cancellationToken);
+    Task<TaskResponse> UpdateTask(UpdateTaskRequest request);
+
+    [Delete("/api_v2/projects/{request.project_id}/tasks/{request.task_id}.json")]
+    System.Threading.Tasks.Task DeleteTask(DeleteTaskRequest request);
   }
 }

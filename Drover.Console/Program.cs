@@ -15,11 +15,7 @@ var connection = ConnectionFactory.CreateConnection(bugherdConfig.ApiKey, bugher
 
 var projectService = connection.CreateProjectService();
 
-CancellationTokenSource cts = new CancellationTokenSource();
-
-var projects = await projectService.GetProjects(cts.Token);
-
+var projects = await projectService.GetProjects();
 Console.WriteLine(string.Join(",", projects.Select(p => p.Name)));
-
 
 Console.ReadKey();

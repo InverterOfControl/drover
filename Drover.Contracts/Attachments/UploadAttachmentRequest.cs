@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Refit;
 
 namespace Drover.Contracts.Attachments
 {
-    public class UploadAttachmentRequest : BaseAttachmentRequest
-    {
-    }
+  public class UploadAttachmentRequest : BaseAttachmentRequest
+  {
+    [AliasAs("file_name")]
+    public string FileName { get; set; }
+  }
 }
