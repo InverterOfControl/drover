@@ -15,6 +15,7 @@ namespace Drover.Contracts.Webhooks
 
     //[AliasAs("event")]
     [JsonPropertyName("event")]
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public WebhookEvent Event { get; set; }
   }
 }

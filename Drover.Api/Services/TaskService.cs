@@ -3,6 +3,7 @@ using Drover.Api.Factories;
 using Drover.Contracts.Tasks;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Drover.Api.Services
@@ -16,7 +17,7 @@ namespace Drover.Api.Services
       _api = CreateApi<ITaskApi>();
     }
 
-    public async Task<DetailedTask> CreateTask(CreateTaskRequest request)
+    public async Task<DetailedTask> CreateTask(CreateTaskRequest request, CancellationToken cancellationToken)
     {
       if(request == null)
       {
@@ -28,12 +29,12 @@ namespace Drover.Api.Services
         return null;
       }
 
-      var response = await _api.CreateTask(request);
+      var response = await _api.CreateTask(request, cancellationToken);
 
       return response.Task;
     }
 
-    public async System.Threading.Tasks.Task DeleteTask(long projectId, long taskId)
+    public async System.Threading.Tasks.Task DeleteTask(long projectId, long taskId, CancellationToken cancellationToken)
     {
       await System.Threading.Tasks.Task.FromResult(0);
 
@@ -48,36 +49,36 @@ namespace Drover.Api.Services
       //await _api.DeleteTask(request);
     }
 
-    public async Task<DetailedTask> GetLocalTask(long projectId, long taskId)
+    public async Task<DetailedTask> GetLocalTask(long projectId, long taskId, CancellationToken cancellationToken)
     {
       var request = new TasksRequest { ProjectId = projectId, TaskId = taskId };
 
-      var response = await _api.GetLocalTask(request);
+      var response = await _api.GetLocalTask(request, cancellationToken);
 
       return response.Task;
     }
 
-    public async Task<IList<Contracts.Tasks.Task>> GetProjectTasks(long projectId)
+    public async Task<IList<Contracts.Tasks.Task>> GetProjectTasks(long projectId, CancellationToken cancellationToken)
     {
       var request = new TasksRequest { ProjectId = projectId };
 
-      var response = await _api.GetTasks(request);
+      var response = await _api.GetTasks(request, cancellationToken);
 
       return response.Tasks;
     }
 
-    public async Task<DetailedTask> GetTask(long projectId, long taskId)
+    public async Task<DetailedTask> GetTask(long projectId, long taskId, CancellationToken cancellationToken)
     {
       var request = new TasksRequest { ProjectId = projectId, TaskId = taskId };
 
-      var response = await _api.GetTask(request);
+      var response = await _api.GetTask(request, cancellationToken);
 
       return response.Task;
     }
 
-    public async Task<DetailedTask> UpdateTask(UpdateTaskRequest request)
+    public async Task<DetailedTask> UpdateTask(UpdateTaskRequest request, CancellationToken cancellationToken)
     {
-      var response = await _api.UpdateTask(request);
+      var response = await _api.UpdateTask(request, cancellationToken);
 
       return response.Task;
     }

@@ -25,10 +25,11 @@ var bugherdConfig = config.GetSection("BugherdConfig").Get<BugherdConfig>();
 
 var connection = ConnectionFactory.CreateConnection(bugherdConfig.ApiKey, bugherdConfig.BaseUri);
 
+var cts = new CancellationTokenSource();
 
 var projectService = connection.CreateProjectService();
 
-var projects = await projectService.GetProjects();
+var projects = await projectService.GetProjects(cts.Token);
 Console.WriteLine(string.Join(",", projects.Select(p => p.Name)));
 
 Console.ReadKey();

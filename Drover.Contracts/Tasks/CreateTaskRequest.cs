@@ -20,6 +20,7 @@ namespace Drover.Contracts.Tasks
     public string Description { get; set; }
 
     [JsonPropertyName("priority")]
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public TaskPriority Priority { get; set; } = TaskPriority.NotSet;
 
     [JsonPropertyName("status")]

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -16,7 +17,9 @@ namespace Drover.Tests.Integration.Tasks
       var taskService = Connection.BugherdConnection.CreateTaskService();
 
       var projectId = Connection.BugherdConfig.DefaultProject;
-      
+
+      var cancellationTokenSource = new CancellationTokenSource();
+
       // Create
       var newTask = await taskService.CreateTask(new Contracts.Tasks.CreateTaskRequest
       {
@@ -29,10 +32,10 @@ namespace Drover.Tests.Integration.Tasks
           Priority = Contracts.Tasks.TaskPriority.Normal,
           Status = "offen"
         }
-      });
+      }, cancellationTokenSource.Token);
 
       // Retrieve
-      var detailedTask = await taskService.GetTask(projectId, newTask.Id);
+      var detailedTask = await taskService.GetTask(projectId, newTask.Id, cancellationTokenSource.Token);
 
       Assert.Equal("Testtask", detailedTask.Description);
 
@@ -47,11 +50,11 @@ namespace Drover.Tests.Integration.Tasks
           Status = "Ist transferiert",
           Priority = Contracts.Tasks.TaskPriority.Important
         }
-      });
+      }, cancellationTokenSource.Token);
 
       // Retrieve again
       // Retrieve
-      var updatedTask = await taskService.GetTask(projectId, newTask.Id);
+      var updatedTask = await taskService.GetTask(projectId, newTask.Id, cancellationTokenSource.Token);
 
       Assert.Equal("Updated Description!", updatedTask.Description);
       //// Delete (Api does not support this yet)

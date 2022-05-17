@@ -11,11 +11,13 @@ namespace Drover.Tests.Integration.Webhooks
     public async Task CreateListAndDelete()
     {
       var webhookService = Connection.BugherdConnection.CreateWebhookService();
-
+      var projectId = Connection.BugherdConfig.DefaultProject;
+     
       // Create a hook
       var newWebhook = await webhookService.CreateWebhook(
         new Uri("http://www.google.com"),
-        Contracts.Webhooks.WebhookEvent.Update);
+        Contracts.Webhooks.WebhookEvent.Update,
+        projectId);
 
       Assert.NotNull(newWebhook);
 
