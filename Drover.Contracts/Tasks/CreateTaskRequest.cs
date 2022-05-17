@@ -1,44 +1,46 @@
 ﻿using Refit;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Drover.Contracts.Tasks
 {
   public class CreateTaskRequest
   {
-    [AliasAs("task")]
+    [JsonPropertyName("task")]
     public NewTask NewTask { get; set; }
 
     [AliasAs("project_id")]
+    [JsonIgnore]
     public long ProjectId { get; set; }
   }
 
   public class NewTask
   {
-    [AliasAs("description")]
+    [JsonPropertyName("description")]
     public string Description { get; set; }
 
-    [AliasAs("priority")]
-    public string Priority { get; set; }
+    [JsonPropertyName("priority")]
+    public TaskPriority Priority { get; set; } = TaskPriority.NotSet;
 
-    [AliasAs("status")]
+    [JsonPropertyName("status")]
     public string Status { get; set; }
 
-    [AliasAs("requester_id")]
+    [JsonPropertyName("requester_id")]
     public long? RequesterId { get; set; }
 
-    [AliasAs("tag_names")]
+    [JsonPropertyName("tag_names")]
     public List<string> TagNames { get; set; }
 
-    [AliasAs("assigned_to_id")]
+    [JsonPropertyName("assigned_to_id")]
     public long? AssignedToId { get; set; }
 
-    [AliasAs("external_id")]
+    [JsonPropertyName("external_id")]
     public string ExternalId { get; set; }
 
-    [AliasAs("requester_email")]
+    [JsonPropertyName("requester_email")]
     public string RequesterEmail { get; set; }
 
-    [AliasAs("assigned_to_email")]
+    [JsonPropertyName("assigned_to_email")]
     public string AssignedToEmail { get; set; }
   }
 }

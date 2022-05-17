@@ -39,7 +39,7 @@ namespace Drover.Contracts.Tasks
     public string[] TagNames { get; set; }
 
     [JsonPropertyName("external_id")]
-    public object ExternalId { get; set; }
+    public string ExternalId { get; set; }
 
     [JsonPropertyName("requester_id")]
     public long? RequesterId { get; set; }

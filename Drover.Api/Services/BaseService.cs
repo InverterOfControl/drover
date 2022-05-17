@@ -26,7 +26,7 @@ namespace Drover.Api.Services
 #else
       var handler = new AuthHandler(_connection.ApiKey, "x");
 #endif
-
+      
       var service = RestService.For<T>(new HttpClient(handler)
       {
         BaseAddress = new Uri(_connection.BaseUri)
