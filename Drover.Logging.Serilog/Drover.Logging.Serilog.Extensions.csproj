@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
 	  <IsPackable>true</IsPackable>
-	  <Version>1.0.1</Version>
+	  <Version>1.0.2</Version>
 	  <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
 	  <Authors>InverterOfControl</Authors>
 	  <PackageProjectUrl>https://github.com/InverterOfControl/drover/</PackageProjectUrl>
@@ -29,7 +29,7 @@
 	<ItemGroup>
 		<None Include="..\LICENSE.md" Pack="true" PackagePath="LICENSE.md" />
 		<None Include="..\Images\drover-logos.jpeg" Pack="true" PackagePath="\" />
-		<None Include="..\README.md" Pack="true" PackagePath="README.md">
+		<None Include="README.md" Pack="true" PackagePath="README.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>

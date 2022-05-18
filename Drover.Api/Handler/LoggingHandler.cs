@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Drover.Api.Logging;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,27 +20,29 @@ namespace Drover.Api.Handler
     async protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
       var req = request;
-      var id = Guid.NewGuid().ToString();
+      var id = Regex.Replace(Convert.ToBase64String(Guid.NewGuid().ToByteArray()), "[/+=]", "");
+      
       var msg = $"[{id} -   Request]";
+      var logger = LogProvider.GetLogger("HttpLogger");
 
-      Debug.WriteLine($"{msg}========Start==========");
-      Debug.WriteLine($"{msg} {req.Method} {req.RequestUri.PathAndQuery} {req.RequestUri.Scheme}/{req.Version}");
-      Debug.WriteLine($"{msg} Host: {req.RequestUri.Scheme}://{req.RequestUri.Host}");
+      logger.LogDebug($"{msg}========Start==========");
+      logger.LogDebug($"{msg} {req.Method} {req.RequestUri.PathAndQuery} {req.RequestUri.Scheme}/{req.Version}");
+      logger.LogDebug($"{msg} Host: {req.RequestUri.Scheme}://{req.RequestUri.Host}");
 
       foreach (var header in req.Headers)
-        Debug.WriteLine($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+        logger.LogDebug($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
 
       if (req.Content != null)
       {
         foreach (var header in req.Content.Headers)
-          Debug.WriteLine($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+          logger.LogDebug($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
 
         if (req.Content is StringContent || this.IsTextBasedContentType(req.Headers) || this.IsTextBasedContentType(req.Content.Headers))
         {
           var result = await req.Content.ReadAsStringAsync();
 
-          Debug.WriteLine($"{msg} Content:");
-          Debug.WriteLine($"{msg} {string.Join("", result.Cast<char>().Take(255))}...");
+          logger.LogDebug($"{msg} Content:");
+          logger.LogDebug($"{msg} {string.Join("", result.Cast<char>().Take(255))}...");
 
         }
       }
@@ -48,23 +53,23 @@ namespace Drover.Api.Handler
 
       var end = DateTime.Now;
 
-      Debug.WriteLine($"{msg} Duration: {end - start}");
-      Debug.WriteLine($"{msg}==========End==========");
+      logger.LogDebug($"{msg} Duration: {end - start}");
+      logger.LogDebug($"{msg}==========End==========");
 
       msg = $"[{id} - Response]";
-      Debug.WriteLine($"{msg}=========Start=========");
+      logger.LogDebug($"{msg}=========Start=========");
 
       var resp = response;
 
-      Debug.WriteLine($"{msg} {req.RequestUri.Scheme.ToUpper()}/{resp.Version} {(int)resp.StatusCode} {resp.ReasonPhrase}");
+      logger.LogDebug($"{msg} {req.RequestUri.Scheme.ToUpper()}/{resp.Version} {(int)resp.StatusCode} {resp.ReasonPhrase}");
 
       foreach (var header in resp.Headers)
-        Debug.WriteLine($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+        logger.LogDebug($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
 
       if (resp.Content != null)
       {
         foreach (var header in resp.Content.Headers)
-          Debug.WriteLine($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+          logger.LogDebug($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
 
         if (resp.Content is StringContent || this.IsTextBasedContentType(resp.Headers) || this.IsTextBasedContentType(resp.Content.Headers))
         {
@@ -72,13 +77,13 @@ namespace Drover.Api.Handler
           var result = await resp.Content.ReadAsStringAsync();
           end = DateTime.Now;
 
-          Debug.WriteLine($"{msg} Content:");
-          Debug.WriteLine($"{msg} {string.Join("", result.Cast<char>().Take(255))}...");
-          Debug.WriteLine($"{msg} Duration: {end - start}");
+          logger.LogDebug($"{msg} Content:");
+          logger.LogDebug($"{msg} {string.Join("", result.Cast<char>().Take(255))}...");
+          logger.LogDebug($"{msg} Duration: {end - start}");
         }
       }
 
-      Debug.WriteLine($"{msg}==========End==========");
+      logger.LogDebug($"{msg}==========End==========");
       return response;
     }
 

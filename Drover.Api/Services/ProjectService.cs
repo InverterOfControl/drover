@@ -69,7 +69,6 @@ namespace Drover.Api.Services
 
         public async Task<List<Project>> GetProjects(int? page, CancellationToken cancellationToken)
         {
-            logger.LogInformation("Calling Projects-Api");
             var request = new ProjectsRequest { Page = page };
 
             var response = await _api.GetProjects(request, cancellationToken).ConfigureAwait(false);
