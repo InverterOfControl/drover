@@ -58,9 +58,9 @@ namespace Drover.Api.Services
       return response.Task;
     }
 
-    public async Task<IList<Contracts.Tasks.Task>> GetProjectTasks(long projectId, CancellationToken cancellationToken)
+    public async Task<IList<Contracts.Tasks.Task>> GetProjectTasks(long projectId, int? page = null , CancellationToken cancellationToken = default)
     {
-      var request = new TasksRequest { ProjectId = projectId };
+      var request = new TasksRequest { ProjectId = projectId, Page = page };
 
       var response = await _api.GetTasks(request, cancellationToken);
 

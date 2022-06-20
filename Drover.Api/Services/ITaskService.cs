@@ -12,7 +12,7 @@ namespace Drover.Api.Services
     /// </summary>
     /// <param name="projectId"></param>
     /// <returns></returns>
-    Task<IList<Contracts.Tasks.Task>> GetProjectTasks(long projectId, CancellationToken cancellationToken);
+    Task<IList<Contracts.Tasks.Task>> GetProjectTasks(long projectId, int? page = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get a specific task from a project. This task contains all details.
