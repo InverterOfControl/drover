@@ -5,6 +5,6 @@ namespace Drover.Contracts.Projects
   public class DeleteProjectRequest
   {
     [AliasAs("project_id")]
-    public int ProjectId { get; set; }
+    public long ProjectId { get; set; }
   }
 }

@@ -1,12 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Drover.Api.Logging
 {
-    public static class LogProvider
+  public static class LogProvider
     {
         private static IDictionary<string, ILogger> _loggers = new Dictionary<string, ILogger>();
         private static ILoggerFactory _loggerFactory = new LoggerFactory();

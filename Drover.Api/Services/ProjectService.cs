@@ -19,14 +19,14 @@ namespace Drover.Api.Services
             _api = CreateApi<IProjectApi>();
         }
 
-        public async Task AddGuest(int projectId, int guestId, string email, CancellationToken cancellationToken)
+        public async Task AddGuest(long projectId, int guestId, string email, CancellationToken cancellationToken)
         {
             var request = new AddGuestRequest { Email = email, ProjectId = projectId, UserId = guestId };
 
             var response = await _api.AddGuest(request, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task AddMember(int projectId, int memberId, CancellationToken cancellationToken)
+        public async Task AddMember(long projectId, int memberId, CancellationToken cancellationToken)
         {
             var request = new AddMemberRequest { UserId = memberId, ProjectId = projectId };
 
@@ -58,7 +58,7 @@ namespace Drover.Api.Services
             return response.Projects;
         }
 
-        public async Task<Project> GetProject(int id, CancellationToken cancellationToken)
+        public async Task<Project> GetProject(long id, CancellationToken cancellationToken)
         {
             var request = new SingleProjectRequest { Id = id };
 
@@ -81,7 +81,7 @@ namespace Drover.Api.Services
             return await this.GetProjects(null, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task DeleteProject(int projectId, CancellationToken cancellationToken)
+        public async Task DeleteProject(long projectId, CancellationToken cancellationToken)
         {
             var request = new DeleteProjectRequest { ProjectId = projectId };
 
