@@ -89,6 +89,7 @@ namespace Drover.Contracts.Tasks
     public string RequesterResolution { get; set; }
 
     [JsonPropertyName("selector_info")]
+    [JsonIgnore]
     public SelectorInfo SelectorInfo { get; set; } = new SelectorInfo();
 
     [JsonPropertyName("due_at")]
